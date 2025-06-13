@@ -54,7 +54,9 @@ runs:
     # TODO(@getchoo): Get this working on MSYS2!
     - name: Setup ccache
       if: ${{ (runner.os != 'Windows' || inputs.msystem == '') && inputs.build-type == 'Debug' }}
-      uses: hendrikmuhs/ccache-action@v1.2.18
+      # TODO(@getchoo): Un-pin when this commit makes it to a stable release!
+      # Needed to support the native Windows ARM runner
+      uses: hendrikmuhs/ccache-action@1eaec4d0426ec8b42d342bf1e7b56fd3660a8fd9
       with:
         variant: sccache
         create-symlink: ${{ runner.os != 'Windows' }}
